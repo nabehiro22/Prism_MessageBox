@@ -1,0 +1,49 @@
+﻿<Window x:Class="Prism_MessageBox.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+		xmlns:ri="clr-namespace:Reactive.Bindings.Interactivity;assembly=ReactiveProperty.NETCore"
+		xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title.Value}" Height="120" Width="200" WindowStartupLocation="CenterScreen" >
+
+	<i:Interaction.Triggers>
+		<i:EventTrigger EventName="Closed">
+			<ri:EventToReactiveCommand Command="{Binding ClosedCommand}" />
+		</i:EventTrigger>
+
+		<!-- Confirmationに対応 -->
+		<l:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="Confirmation" >
+			<l:ConfirmationDialogInteractionMessageAction/>
+		</l:InteractionMessageTrigger>
+
+		<!-- Informationに対応 -->
+		<l:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="Information" >
+			<l:InformationDialogInteractionMessageAction/>
+		</l:InteractionMessageTrigger>
+
+		<!-- OpenFileに対応 -->
+		<l:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="OpenFile" >
+			<l:OpenFileDialogInteractionMessageAction/>
+		</l:InteractionMessageTrigger>
+
+		<!-- SaveFileに対応 -->
+		<l:InteractionMessageTrigger Messenger="{Binding Messenger}" MessageKey="SaveFile" >
+			<l:SaveFileDialogInteractionMessageAction/>
+		</l:InteractionMessageTrigger>
+
+
+	</i:Interaction.Triggers>
+
+
+
+	<Grid>
+		<StackPanel Orientation="Vertical">
+			<Button Content="Confirmation" Command="{Binding ConfirmationCommand}" />
+			<Button Content="Information" Command="{Binding InformationCommand}" />
+			<Button Content="OpenFile" Command="{Binding OpenFileCommand}" />
+			<Button Content="SaveFile" Command="{Binding SaveFileCommand}" />
+		</StackPanel>
+	</Grid>
+</Window>

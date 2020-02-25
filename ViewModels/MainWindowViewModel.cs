@@ -4,12 +4,13 @@ using Prism.Mvvm;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using System;
+using System.ComponentModel;
 using System.Reactive.Disposables;
 using System.Windows;
 
 namespace Prism_MessageBox.ViewModels
 {
-	public class MainWindowViewModel : BindableBase
+	public class MainWindowViewModel : BindableBase, INotifyPropertyChanged
 	{
 		/// <summary>
 		/// タイトル

@@ -80,7 +80,7 @@ namespace Prism_MessageBox.ViewModels
 		/// <param name="title">タイトル</param>
 		/// <param name="button">表示するボタン</param>
 		/// <param name="image">表示するアイコン</param>
-		public ConfirmationMessage ShowConfirmationDialog(string message, string title, MessageBoxButton button, MessageBoxImage image)
+		private ConfirmationMessage ShowConfirmationDialog(string message, string title, MessageBoxButton button, MessageBoxImage image)
 		{
 			ConfirmationMessage msg = new ConfirmationMessage()
 			{
@@ -106,7 +106,7 @@ namespace Prism_MessageBox.ViewModels
 		/// <param name="message">メッセージ</param>
 		/// <param name="title">タイトル</param>
 		/// <param name="image">表示するイメージ</param>
-		public async void ShowInformationDialog(string message, string title, MessageBoxImage image)
+		private async void ShowInformationDialog(string message, string title, MessageBoxImage image)
 		{
 			await Messenger.RaiseAsync(new InformationMessage(message, title, image, "Information"));
 		}
@@ -114,7 +114,7 @@ namespace Prism_MessageBox.ViewModels
 		/// <summary>
 		/// OpenFileダイアログの表示
 		/// </summary>
-		public string[] ShowOpenFileDialog()
+		private string[] ShowOpenFileDialog()
 		{
 			OpeningFileSelectionMessage msg = new OpeningFileSelectionMessage()
 			{
@@ -139,7 +139,7 @@ namespace Prism_MessageBox.ViewModels
 		/// SaveFileダイアログの表示
 		/// </summary>
 		/// <returns></returns>
-		public string[] SaveFileDialog()
+		private string[] SaveFileDialog()
 		{
 			SavingFileSelectionMessage msg = new SavingFileSelectionMessage()
 			{
